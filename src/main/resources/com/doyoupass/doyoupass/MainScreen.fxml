@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="602.0" style="-fx-background-color: #3c81bc;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.doyoupass.doyoupass.MainScreenController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="602.0" style="-fx-background-color: #3c81bc;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.doyoupass.doyoupass.MainScreenController">
    <children>
       <TextArea fx:id="noteField" editable="false" layoutX="175.0" layoutY="14.0" prefHeight="343.0" prefWidth="416.0" text="dssdfsdfsdf">
          <font>
@@ -25,14 +25,6 @@
             <DropShadow color="#00000086" />
          </effect>
       </TextField>
-      <Button fx:id="buttonAct" layoutX="35.0" layoutY="14.0" mnemonicParsing="false" onAction="#act" prefHeight="36.0" prefWidth="110.0" stylesheets="@BUTTONMa.css" text="Actualiser">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-         <effect>
-            <DropShadow color="#00000081" />
-         </effect>
-      </Button>
       <Button fx:id="buttonPres" layoutX="35.0" layoutY="75.0" mnemonicParsing="false" onAction="#pres" prefHeight="36.0" prefWidth="110.0" stylesheets="@BUTTONMa.css" text="Valider présence">
          <font>
             <Font name="System Bold" size="12.0" />

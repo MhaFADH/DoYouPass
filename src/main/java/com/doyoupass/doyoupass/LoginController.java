@@ -43,9 +43,6 @@ public class LoginController{
         password = passwordField.getText();
         cookie = tools.connectPepal(usernameField.getText(),passwordField.getText());
 
-
-
-
         if(cookie == null){
 
             errorLabel.setVisible(true);
@@ -60,10 +57,6 @@ public class LoginController{
 
         }
 
-
-
     }
-
-
 
 }

@@ -7,7 +7,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -19,6 +18,9 @@ import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import static com.doyoupass.doyoupass.LoginController.*;
 
@@ -33,31 +35,11 @@ public class MainScreenController implements Initializable {
     public static float moyenne;
 
     @FXML
-    private Button buttonAct;
-    @FXML
     private Button buttonPres;
     @FXML
     private TextArea noteField;
     @FXML
     private TextField moyField;
-
-    public void act(ActionEvent e) throws IOException {
-
-        cookie = tools.connectPepal(username,password);
-
-        Main mainn = new Main();
-
-        Stage stage = (Stage) buttonAct.getScene().getWindow();
-        stage.close();
-
-        mainn.mainScreen(new Stage());
-        tools.orgaNotes(noteField,moyField,sumNotes,moyenne);
-
-
-    }
-
-
-
 
     public void pres(ActionEvent e) throws IOException {
 
@@ -88,9 +70,6 @@ public class MainScreenController implements Initializable {
             matin = hrefLinks[0].attr("href").replace("/presences/s/","");
             aprem = hrefLinks[1].attr("href").replace("/presences/s/","");
         }
-
-
-
 
 
         HashMap<String,String> setPresToken = new HashMap<>();
@@ -154,9 +133,6 @@ public class MainScreenController implements Initializable {
                 }
             }
 
-
-
-
         }else{
             if(matinResult.text().contains("Vous avez été noté présent le")){
                 alert(msg);
@@ -181,7 +157,6 @@ public class MainScreenController implements Initializable {
         }
 
 
-
     }
 
     public void alert(String msg){
@@ -201,5 +176,7 @@ public class MainScreenController implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
+        executor.scheduleAtFixedRate(tools.keepSession, 0, 60, TimeUnit.SECONDS);
     }
 }

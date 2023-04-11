@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static com.doyoupass.doyoupass.LoginController.*;
 
@@ -21,26 +20,20 @@ public class Tools {
     // se connecter à pepal en cas d'erreur retourner null
     public HashMap<String,String> connectPepal(String username,String password) {
         try {
-            Connection.Response response = Jsoup.connect("https://www.pepal.eu/include/php/ident.php")
-                    .method(Connection.Method.GET)
-                    .execute();
-
-            Document loginDoc = response.parse();
-            HashMap<String,String> cookie = new HashMap<>(response.cookies());
-
 
             HashMap<String,String> formData = new HashMap<>();
-
 
             formData.put("login", username);
             formData.put("pass", password);
 
-            Connection.Response homePage = Jsoup.connect("https://www.pepal.eu/include/php/ident.php")
-                    .cookies(cookie)
+            Connection.Response response = Jsoup.connect("https://www.pepal.eu/include/php/ident.php")
                     .data(formData)
                     .method(Connection.Method.POST)
                     .execute();
-            Elements doc = homePage.parse().getElementsByTag("p");
+
+            HashMap<String,String> cookie = new HashMap<>(response.cookies());
+
+            Elements doc = response.parse().getElementsByTag("p");
 
 
             if (doc.text().contains("Redirection dans : ")) {
@@ -77,13 +70,6 @@ public class Tools {
 
         noteHtml = getHtml("https://www.pepal.eu/?my=notes");
 
-/*        Observable.just(getHtml("https://www.pepal.eu/?my=notes"))
-                .map(doc -> doc.getElementsByClass("note_devoir"))
-                .flatMapIterable(list -> list.stream().collect(Collectors.toList()))
-                .subscribe(onNext -> {
-                    float note = Float.parseFloat(onNext.child(3).text());
-                    noteField.appendText(onNext.child(0).text().replace(" PUBLIE","") +": "+note);
-                });*/
 
         Elements trClass = noteHtml.getElementsByClass("note_devoir");
 
@@ -109,11 +95,19 @@ public class Tools {
 
     }
 
-
-
-
-
-
+    Runnable keepSession = new Runnable() {
+        public void run() {
+            try {
+                Connection.Response page = Jsoup.connect("https://www.pepal.eu/interaction.php")
+                        .method(Connection.Method.POST)
+                        .cookies(cookie)
+                        .execute();
+                System.out.println("tried");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    };
 
 
 }
