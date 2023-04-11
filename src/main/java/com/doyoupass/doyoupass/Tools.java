@@ -61,7 +61,6 @@ public class Tools {
 
 
     public void orgaNotes(TextArea noteField, TextField moyField, float sumNotes, float moyenne) throws IOException {
-        noteField.clear();
         Document noteHtml = null;
         sumNotes = 0;
         moyenne = 0;
@@ -86,11 +85,8 @@ public class Tools {
 
 
         for(String ele:tabloNotes){
-            noteField.appendText(ele+"\n");
 
         }
-
-        moyField.setText("Moyenne generale: "+ moyenne);
 
 
     }
