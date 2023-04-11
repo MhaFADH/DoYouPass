@@ -27,6 +27,7 @@ import static com.doyoupass.doyoupass.LoginController.*;
 
 public class MainScreenController implements Initializable {
     Tools tools = new Tools();
+    VerifTools vTools = new VerifTools();
     public final String msg = "Vous avez déjà été noté présent, ou alors l'appel a été clôturé" ;
     public final String msg1 = "l'appel a été clôturé" ;
     public final String msg2 = "l'appel n'a pas été encore ouvert" ;
@@ -40,6 +41,9 @@ public class MainScreenController implements Initializable {
     private TextArea noteField;
     @FXML
     private TextField moyField;
+
+    public MainScreenController() throws IOException {
+    }
 
     public void pres(ActionEvent e) throws IOException {
 
@@ -171,6 +175,13 @@ public class MainScreenController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            vTools.isUnderAHundred();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
         try {
             tools.orgaNotes(noteField,moyField,sumNotes,moyenne);
         } catch (IOException e) {

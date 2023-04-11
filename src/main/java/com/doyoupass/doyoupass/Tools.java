@@ -72,13 +72,9 @@ public class Tools {
 
         Elements trClass = noteHtml.getElementsByClass("note_devoir");
 
-        HashMap<String,String> notes = new HashMap<String, String>();
-
-
         for(Element ele:trClass){
             String note = ele.child(3).text();
             tabloNotes.add(ele.child(0).text().replace(" PUBLIE","")+":  "+ note);
-            sumNotes += Double.parseDouble(note);
         }
 
         moyenne = sumNotes / tabloNotes.size();
