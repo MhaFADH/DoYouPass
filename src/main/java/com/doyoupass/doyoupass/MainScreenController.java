@@ -175,13 +175,7 @@ public class MainScreenController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        try {
-            vTools.isUnderAHundred();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
-        }
+        System.out.println(vTools.stageState());
         try {
             tools.orgaNotes(noteField,moyField,sumNotes,moyenne);
         } catch (IOException e) {

@@ -81,7 +81,21 @@ public class VerifTools {
     }
 
     public String stageState(){
-        return "";
+        Elements notes = noteHmtl.getElementsByClass("info");
+        Element stgTr = notes.last();
+        String note = stgTr.child(3).text();
+
+        if(note.equals("")){
+            return "En attente";
+        }else if(note.contains("ABSENT") | note.contains("EXEMPTE")){
+            return "En attente";
+        }else if(Double.parseDouble(note)>= 10){
+            return "OK!";
+        }else{
+            return "NO!";
+        }
+
+
     }
 
 
