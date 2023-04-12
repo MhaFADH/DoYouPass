@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.layout.Pane;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -47,9 +48,45 @@ public class MainScreenController implements Initializable {
     private TableColumn coef;
     @FXML
     private TableColumn note;
+    @FXML
+    private Pane homePane;
+    @FXML
+    private Pane passPane;
+    @FXML
+    private Pane evolPane;
+    @FXML
+    private TextField rapportStg;
+    @FXML
+    private TextField underFive;
+    @FXML
+    private TextField higherTen;
+    @FXML
+    private TextField underHundred;
+    @FXML
+    private TextField isPassing;
 
     public MainScreenController() throws IOException {
     }
+    public void homeB(ActionEvent e) throws IOException {
+        homePane.setVisible(true);
+        passPane.setVisible(false);
+        evolPane.setVisible(false);
+
+    }
+    public void evolB(ActionEvent e) throws IOException {
+        homePane.setVisible(false);
+        passPane.setVisible(false);
+        evolPane.setVisible(true);
+
+    }
+    public void passB(ActionEvent e) throws IOException {
+        homePane.setVisible(false);
+        passPane.setVisible(true);
+        evolPane.setVisible(false);
+
+    }
+
+
 
     public void pres(ActionEvent e) throws IOException {
 
@@ -201,5 +238,61 @@ public class MainScreenController implements Initializable {
 
         ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
         executor.scheduleAtFixedRate(tools.keepSession, 0, 60, TimeUnit.SECONDS);
+
+        int eta = 0;
+        String exception = "";
+        String stgRes = vTools.stageState();
+
+        switch (stgRes){
+            case "OK!":
+                rapportStg.setStyle("-fx-background-color: green;");
+                eta++;
+                break;
+            case "NO!":
+                rapportStg.setStyle("-fx-background-color: red;");
+                break;
+            default:
+                rapportStg.setStyle("-fx-background-color: orange;");
+                exception = "Exc";
+                break;
+        }
+
+        if(vTools.isUnderFive()){
+            underFive.setStyle("-fx-background-color: red;");
+        }else {
+            underFive.setStyle("-fx-background-color: green;");
+            eta++;
+        }
+
+        if(vTools.moyG()>=10){
+            higherTen.setStyle("-fx-background-color: green;");
+            eta++;
+        }else{
+            higherTen.setStyle("-fx-background-color: red;");
+        }
+
+        try {
+            if(vTools.isUnderAHundred()){
+                underHundred.setStyle("-fx-background-color: green;");
+                eta++;
+            }else{
+                underHundred.setStyle("-fx-background-color: red;");
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+        if (eta == 4){
+            isPassing.setStyle("-fx-background-color: green;");
+        }else if (moyGene<10 | vTools.isUnderFive()){
+            isPassing.setStyle("-fx-background-color: red;");
+        } else if (exception.contains("Exc")) {
+            isPassing.setStyle("-fx-background-color: orange;");
+        }else{
+            isPassing.setStyle("-fx-background-color: red;");
+        }
+
+
     }
 }

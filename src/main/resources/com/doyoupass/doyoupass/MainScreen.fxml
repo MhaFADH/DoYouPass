@@ -22,35 +22,41 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="787.0" prefWidth="1124.0" style="-fx-background-color: #B1D1DE;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.doyoupass.doyoupass.MainScreenController">
    <children>
-      <Pane disable="true" layoutX="288.0" prefHeight="787.0" prefWidth="838.0" style="-fx-background-color: #B1D1DE;" visible="false">
+      <Pane fx:id="passPane" layoutX="288.0" prefHeight="787.0" prefWidth="838.0" style="-fx-background-color: #B1D1DE;">
          <children>
-            <TextField layoutX="219.0" layoutY="238.0" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: white;" />
-            <Label layoutX="122.0" layoutY="240.0" text="Note &gt;= 5">
+            <TextField fx:id="underFive" editable="false" layoutX="345.0" layoutY="214.0" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: white;" text="5" />
+            <Label layoutX="313.0" layoutY="176.0" text="EN DESSOUS DE 5">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="343.0" layoutY="239.0" text="Moyenne &gt;=10">
+            <Label layoutX="467.0" layoutY="176.0" text="MOYENNE">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="594.0" layoutY="241.0" text="Absence &lt; 100">
+            <Label layoutX="570.0" layoutY="176.0" text="ABSENCES">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField layoutX="460.0" layoutY="237.0" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: white;" />
-            <TextField layoutX="711.0" layoutY="237.0" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: white;" />
+            <TextField fx:id="higherTen" editable="false" layoutX="503.0" layoutY="214.0" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: white;" text="10" />
+            <TextField fx:id="underHundred" editable="false" layoutX="604.0" layoutY="214.0" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: white;" text="abs" />
             <Label layoutX="298.0" layoutY="367.0" text="DoYouPass">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <TextField layoutX="345.0" layoutY="443.0" prefHeight="82.0" prefWidth="93.0" style="-fx-background-color: white;" />
+            <TextField fx:id="isPassing" editable="false" layoutX="345.0" layoutY="443.0" prefHeight="82.0" prefWidth="93.0" style="-fx-background-color: white;" text="pass" />
+            <TextField fx:id="rapportStg" editable="false" layoutX="192.0" layoutY="214.0" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: white;" text="stg" />
+            <Label layoutX="142.0" layoutY="176.0" text="RAPPORT DE STAGE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
-      <Pane disable="true" layoutX="288.0" prefHeight="787.0" prefWidth="838.0" style="-fx-background-color: #B1D1DE;" visible="false">
+      <Pane fx:id="evolPane" layoutX="288.0" prefHeight="787.0" prefWidth="838.0" style="-fx-background-color: #B1D1DE;" visible="false">
          <children>
             <LineChart layoutX="95.0" layoutY="143.0" prefHeight="502.0" prefWidth="625.0" title="Moyenne">
               <xAxis>
@@ -62,7 +68,7 @@
             </LineChart>
          </children>
       </Pane>
-      <Pane layoutX="288.0" layoutY="-7.0" prefHeight="787.0" prefWidth="838.0" style="-fx-background-color: #B1D1DE;">
+      <Pane fx:id="homePane" layoutX="288.0" layoutY="-7.0" prefHeight="787.0" prefWidth="838.0" style="-fx-background-color: #B1D1DE;" visible="false">
          <children>
             <TextField fx:id="absField" editable="false" layoutX="149.0" layoutY="520.0" text="absence total">
                <effect>
@@ -113,7 +119,7 @@
                   </Label>
                </children>
             </Pane>
-            <Button alignment="TOP_CENTER" focusTraversable="false" mnemonicParsing="false" prefHeight="47.0" prefWidth="207.0" style="-fx-background-color: #168BD8; -fx-background-radius: 50 50 50 50;" stylesheets="@BUTTONMa.css" text="Home" textFill="WHITE">
+            <Button fx:id="homeButton" alignment="TOP_CENTER" focusTraversable="false" mnemonicParsing="false" onAction="#homeB" prefHeight="47.0" prefWidth="207.0" style="-fx-background-color: #168BD8; -fx-background-radius: 50 50 50 50;" stylesheets="@BUTTONMa.css" text="Home" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
@@ -157,7 +163,7 @@
                   <Insets bottom="10.0" left="50.0" right="50.0" />
                </VBox.margin>
             </Button>
-            <Button focusTraversable="false" mnemonicParsing="false" prefHeight="47.0" prefWidth="205.0" style="-fx-background-color: #168BD8; -fx-background-radius: 50 50 50 50;" stylesheets="@BUTTONMa.css" text="Evolution" textFill="WHITE">
+            <Button fx:id="evolButton" focusTraversable="false" mnemonicParsing="false" onAction="#evolB" prefHeight="47.0" prefWidth="205.0" style="-fx-background-color: #168BD8; -fx-background-radius: 50 50 50 50;" stylesheets="@BUTTONMa.css" text="Evolution" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
@@ -179,7 +185,7 @@
                   <Insets bottom="10.0" left="50.0" right="50.0" />
                </VBox.margin>
             </Button>
-            <Button focusTraversable="false" mnemonicParsing="false" prefHeight="47.0" prefWidth="205.0" style="-fx-background-color: #168BD8; -fx-background-radius: 50 50 50 50;" stylesheets="@BUTTONMa.css" text="DoYouPass" textFill="WHITE">
+            <Button fx:id="passButton" focusTraversable="false" mnemonicParsing="false" onAction="#passB" prefHeight="47.0" prefWidth="205.0" style="-fx-background-color: #168BD8; -fx-background-radius: 50 50 50 50;" stylesheets="@BUTTONMa.css" text="DoYouPass" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>

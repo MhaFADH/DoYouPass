@@ -53,9 +53,9 @@ public class VerifTools {
         System.out.println(absences);
 
         if(hSum>=100){
-            return true;
-        }else{
             return false;
+        }else{
+            return true;
         }
     }
     public boolean isUnderFive(){
@@ -88,7 +88,7 @@ public class VerifTools {
             return "En attente";
         }else if(note.contains("ABSENT") | note.contains("EXEMPTE")){
             return "En attente";
-        }else if(Double.parseDouble(note)>= 10){
+        }else if(Double.parseDouble(note)>= 12){
             return "OK!";
         }else{
             return "NO!";
