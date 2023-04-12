@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
@@ -16,35 +20,51 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="787.0" prefWidth="1124.0" style="-fx-background-color: #e6e7ff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.doyoupass.doyoupass.MainScreenController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="787.0" prefWidth="1124.0" style="-fx-background-color: #B1D1DE;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.doyoupass.doyoupass.MainScreenController">
    <children>
-      <Pane disable="true" layoutX="288.0" layoutY="-7.0" prefHeight="787.0" prefWidth="838.0" visible="false">
+      <Pane disable="true" layoutX="288.0" prefHeight="787.0" prefWidth="838.0" style="-fx-background-color: #B1D1DE;" visible="false">
          <children>
-            <CheckBox layoutX="143.0" layoutY="219.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="113.0" text="Note &gt;= 5">
+            <TextField layoutX="219.0" layoutY="238.0" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: white;" />
+            <Label layoutX="122.0" layoutY="240.0" text="Note &gt;= 5">
                <font>
                   <Font size="14.0" />
                </font>
-            </CheckBox>
-            <CheckBox layoutX="360.0" layoutY="219.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Moyenne &gt;=10">
+            </Label>
+            <Label layoutX="343.0" layoutY="239.0" text="Moyenne &gt;=10">
                <font>
                   <Font size="14.0" />
                </font>
-            </CheckBox>
-            <CheckBox layoutX="573.0" layoutY="219.0" mnemonicParsing="false" text="Absence &lt; 100" textAlignment="CENTER">
+            </Label>
+            <Label layoutX="594.0" layoutY="241.0" text="Absence &lt; 100">
                <font>
                   <Font size="14.0" />
                </font>
-            </CheckBox>
-            <CheckBox layoutX="334.0" layoutY="394.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="170.0" text="DoYouPass">
+            </Label>
+            <TextField layoutX="460.0" layoutY="237.0" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: white;" />
+            <TextField layoutX="711.0" layoutY="237.0" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: white;" />
+            <Label layoutX="298.0" layoutY="367.0" text="DoYouPass">
                <font>
-                  <Font name="System Bold" size="24.0" />
+                  <Font name="System Bold" size="36.0" />
                </font>
-            </CheckBox>
+            </Label>
+            <TextField layoutX="345.0" layoutY="443.0" prefHeight="82.0" prefWidth="93.0" style="-fx-background-color: white;" />
          </children>
       </Pane>
-      <Pane layoutX="288.0" layoutY="-7.0" prefHeight="787.0" prefWidth="838.0">
+      <Pane disable="true" layoutX="288.0" prefHeight="787.0" prefWidth="838.0" style="-fx-background-color: #B1D1DE;" visible="false">
          <children>
-            <TextField editable="false" layoutX="155.0" layoutY="379.0" text="absence total">
+            <LineChart layoutX="95.0" layoutY="143.0" prefHeight="502.0" prefWidth="625.0" title="Moyenne">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </LineChart>
+         </children>
+      </Pane>
+      <Pane layoutX="288.0" layoutY="-7.0" prefHeight="787.0" prefWidth="838.0" style="-fx-background-color: #B1D1DE;">
+         <children>
+            <TextField fx:id="absField" editable="false" layoutX="149.0" layoutY="520.0" text="absence total">
                <effect>
                   <DropShadow />
                </effect>
@@ -52,7 +72,7 @@
                   <Font name="System Bold" size="13.0" />
                </font>
             </TextField>
-            <GridPane layoutX="54.0" layoutY="26.0" prefHeight="275.0" prefWidth="745.0">
+            <GridPane layoutX="58.0" layoutY="159.0" prefHeight="275.0" prefWidth="745.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
@@ -60,17 +80,19 @@
                 <RowConstraints maxHeight="332.0" minHeight="10.0" prefHeight="247.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <TableView prefHeight="200.0" prefWidth="200.0">
+                  <TableView fx:id="tableauNotes" prefHeight="200.0" prefWidth="200.0">
                     <columns>
-                      <TableColumn prefWidth="404.0000305175781" style="-fx-background-color: #1660ba;" text="Matière" />
-                      <TableColumn minWidth="0.0" prefWidth="103.0" style="-fx-background-color: #1660ba;" text="Coef" />
-                        <TableColumn prefWidth="160.0" style="-fx-background-color: #1660ba;" text="Date" />
-                        <TableColumn prefWidth="76.0" style="-fx-background-color: #1660ba;" text="Note" />
+                      <TableColumn fx:id="mat" prefWidth="404.0000305175781" style="-fx-background-color: #1660ba;" text="Matière" />
+                      <TableColumn fx:id="coef" minWidth="0.0" prefWidth="103.0" style="-fx-background-color: #1660ba;" text="Coef" />
+                        <TableColumn fx:id="note" prefWidth="76.0" style="-fx-background-color: #1660ba;" text="Note" />
                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
                   </TableView>
                </children>
             </GridPane>
-            <TextField editable="false" layoutX="565.0" layoutY="379.0" prefHeight="27.0" prefWidth="173.0" text="Moyenne gen">
+            <TextField fx:id="moyField" editable="false" layoutX="570.0" layoutY="520.0" prefHeight="27.0" prefWidth="173.0" text="Moyenne gen">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
@@ -78,12 +100,11 @@
                   <DropShadow color="#00000086" />
                </effect>
             </TextField>
-            <ProgressBar layoutX="307.0" layoutY="520.0" prefHeight="42.0" prefWidth="200.0" progress="0.0" />
          </children>
       </Pane>
-      <VBox prefHeight="787.0" prefWidth="288.0" style="-fx-background-color: #1d72db;">
+      <VBox prefHeight="787.0" prefWidth="288.0" style="-fx-background-color: #24B4EF;">
          <children>
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #1d72db;">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #24B4EF;">
                <children>
                   <Label layoutX="22.0" layoutY="54.0" prefHeight="92.0" prefWidth="258.0" text="SUP DE VINCI" textAlignment="CENTER" textFill="WHITE">
                      <font>
@@ -92,7 +113,7 @@
                   </Label>
                </children>
             </Pane>
-            <Button focusTraversable="false" mnemonicParsing="false" prefHeight="80.0" prefWidth="400.0" style="-fx-background-color: #1660ba;" stylesheets="@BUTTONMa.css" text="Home" textFill="WHITE">
+            <Button alignment="TOP_CENTER" focusTraversable="false" mnemonicParsing="false" prefHeight="47.0" prefWidth="207.0" style="-fx-background-color: #168BD8; -fx-background-radius: 50 50 50 50;" stylesheets="@BUTTONMa.css" text="Home" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
@@ -103,8 +124,18 @@
                      </color>
                   </DropShadow>
                </effect>
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../image/pngegg.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="50.0" right="50.0" />
+               </VBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="400.0" style="-fx-background-color: #1660ba;" stylesheets="@BUTTONMa.css" text="Valider présence" textFill="WHITE">
+            <Button fx:id="buttonPres" mnemonicParsing="false" onAction="#pres" prefHeight="47.0" prefWidth="205.0" style="-fx-background-color: #168BD8; -fx-background-radius: 50 50 50 50;" stylesheets="@BUTTONMa.css" text="Présence" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
@@ -115,8 +146,18 @@
                      </color>
                   </DropShadow>
                </effect>
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../image/pngegg (1).png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="50.0" right="50.0" />
+               </VBox.margin>
             </Button>
-            <Button focusTraversable="false" mnemonicParsing="false" prefHeight="80.0" prefWidth="400.0" style="-fx-background-color: #1660ba;" stylesheets="@BUTTONMa.css" text="DoYouPass" textFill="WHITE">
+            <Button focusTraversable="false" mnemonicParsing="false" prefHeight="47.0" prefWidth="205.0" style="-fx-background-color: #168BD8; -fx-background-radius: 50 50 50 50;" stylesheets="@BUTTONMa.css" text="Evolution" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
@@ -127,7 +168,48 @@
                      </color>
                   </DropShadow>
                </effect>
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../image/kisspng-pictogram-logo-brand-5b1d8142032b95.036037641528660290013.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="50.0" right="50.0" />
+               </VBox.margin>
             </Button>
+            <Button focusTraversable="false" mnemonicParsing="false" prefHeight="47.0" prefWidth="205.0" style="-fx-background-color: #168BD8; -fx-background-radius: 50 50 50 50;" stylesheets="@BUTTONMa.css" text="DoYouPass" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+               <effect>
+                  <DropShadow height="0.0" radius="0.0" width="0.0">
+                     <color>
+                        <Color opacity="0.5099999904632568" />
+                     </color>
+                  </DropShadow>
+               </effect>
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../image/Pngtreevector valid icon_3785585.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="50.0" right="50.0" />
+               </VBox.margin>
+            </Button>
+            <Pane prefHeight="269.0" prefWidth="288.0">
+               <children>
+                  <ImageView fitHeight="225.0" fitWidth="204.0" layoutX="49.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../image/sup.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
          </children>
       </VBox>
    </children>

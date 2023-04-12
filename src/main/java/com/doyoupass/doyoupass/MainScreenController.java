@@ -3,10 +3,7 @@ package com.doyoupass.doyoupass;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -23,7 +20,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import static com.doyoupass.doyoupass.LoginController.*;
-import static com.doyoupass.doyoupass.VerifTools.moyGene;
+import static com.doyoupass.doyoupass.VerifTools.*;
 
 
 public class MainScreenController implements Initializable {
@@ -39,15 +36,24 @@ public class MainScreenController implements Initializable {
     @FXML
     private Button buttonPres;
     @FXML
-    private TextArea noteField;
+    private TextField absField;
     @FXML
     private TextField moyField;
+    @FXML
+    private TableView tableauNotes;
+    @FXML
+    private TableColumn mat;
+    @FXML
+    private TableColumn coef;
+    @FXML
+    private TableColumn note;
 
     public MainScreenController() throws IOException {
     }
 
     public void pres(ActionEvent e) throws IOException {
 
+        absField.setText(absences);
 
         Document presPage;
 
@@ -176,12 +182,23 @@ public class MainScreenController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        moyGene = vTools.moyG();
         try {
-            tools.orgaNotes(noteField,moyField,sumNotes,moyenne);
+            vTools.isUnderAHundred();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+        moyGene = vTools.moyG();
+        moyField.setText(moyGene+"");
+        absField.setText(absences);
+
+        try {
+            tools.orgaNotes(tableauNotes,mat,coef,note,grds);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
         ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
         executor.scheduleAtFixedRate(tools.keepSession, 0, 60, TimeUnit.SECONDS);
     }

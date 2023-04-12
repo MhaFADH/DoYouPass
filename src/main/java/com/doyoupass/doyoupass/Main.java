@@ -17,7 +17,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws IOException {
 
         Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
-        Scene scene = new Scene(root, 600, 337);
+        Scene scene = new Scene(root, 1200, 800);
         scene.setFill(Color.web("#3c81bc"));
         primaryStage.setTitle("Pepal Login");
         primaryStage.setScene(scene);
@@ -29,7 +29,7 @@ public class Main extends Application {
     public void mainScreen(Stage primaryStage) throws IOException {
 
         Parent root = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
-        Scene scene = new Scene(root, 602, 400);
+        Scene scene = new Scene(root, 1200, 800);
         scene.setFill(Color.web("#3c81bc"));
         primaryStage.setTitle("Pepal");
         primaryStage.setScene(scene);

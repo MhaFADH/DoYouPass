@@ -1,14 +1,14 @@
 package com.doyoupass.doyoupass;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.TableColumn;
+
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -57,30 +57,18 @@ public class Tools {
     }
 
 
-    public void orgaNotes(TextArea noteField, TextField moyField, float sumNotes, float moyenne) throws IOException {
-        Document noteHtml = null;
-        sumNotes = 0;
-        moyenne = 0;
+    public void orgaNotes(TableView tableauNotes, TableColumn mat, TableColumn coef, TableColumn note, List<Notees> grds) throws IOException {
 
-        List<String> tabloNotes = new ArrayList<>();
+        mat.setCellValueFactory(new PropertyValueFactory<>("matiere"));
 
-        noteHtml = getHtml("https://www.pepal.eu/?my=notes");
+        coef.setCellValueFactory(new PropertyValueFactory<>("coef"));
+
+        note.setCellValueFactory(new PropertyValueFactory<>("notes"));
 
 
-        Elements trClass = noteHtml.getElementsByClass("note_devoir");
-
-        for(Element ele:trClass){
-            String note = ele.child(3).text();
-            tabloNotes.add(ele.child(0).text().replace(" PUBLIE","")+":  "+ note);
+        for (Notees subj:grds) {
+            tableauNotes.getItems().add(subj);
         }
-
-        moyenne = sumNotes / tabloNotes.size();
-
-
-        for(String ele:tabloNotes){
-
-        }
-
 
     }
 

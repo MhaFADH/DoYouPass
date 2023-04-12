@@ -48,7 +48,7 @@ public class VerifTools {
             hSum += counter;
         }
 
-        absences = hSum+"h"+mSum;
+        absences = hSum+"h"+mSum+"m";
 
         System.out.println(absences);
 
