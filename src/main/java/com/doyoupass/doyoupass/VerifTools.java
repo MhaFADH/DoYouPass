@@ -1,25 +1,24 @@
 package com.doyoupass.doyoupass;
 
-import org.jsoup.Connection;
-import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
-import static com.doyoupass.doyoupass.LoginController.cookie;
 
 public class VerifTools {
 
     Tools tools;
     Document noteHmtl;
     Document fiche;
-    String regex = "\\d+";
     static String absences;
+    static List<Notees> grds = new ArrayList<>() ;
+    static double moyGene;
+
 
     public VerifTools() throws IOException {
         this.tools = new Tools();
@@ -96,6 +95,57 @@ public class VerifTools {
         }
 
 
+    }
+
+    public double moyG(){
+        List<Double> notestb;
+        String matiere;
+        String coef;
+        List<Element> array = new ArrayList<>();
+
+        int counter = 0;
+        double sum = 0;
+        double moyG = 0;
+
+        Elements tr = noteHmtl.getElementsByTag("tr");
+
+        for (Element ele:tr) {
+            if(ele.hasClass("info") | ele.hasClass("note_devoir"))
+                array.add(ele);
+        }
+
+        long nbele = array.stream().count();
+
+        for (int i=0; i<nbele;i++){
+            notestb = new ArrayList<>();
+            Element act = array.get(i);
+            if(act.hasClass("info")){
+                for(int j = i+1;j<nbele;j++){
+                    if(array.get(j).hasClass("note_devoir")){
+                        String note = array.get(j).child(3).text();
+                        if(note.contains("EXEMPTE") | note.contains("ABSENT")){
+                            continue;
+                        }
+                        notestb.add(Double.parseDouble(note));
+
+                    }else{
+                        break;
+                    }
+                }
+                Notees subject = new Notees(act.child(0).text(),Double.parseDouble(act.child(1).text()),notestb);
+                grds.add(subject);
+            }
+        }
+
+
+        for (Notees subj:grds) {
+            if(subj.moyenneSubj()==null){
+            }else{
+                counter += subj.coef;
+                sum += subj.moyenneSubj();
+            }
+        }
+        return (Math.round((sum/counter)*100.0)/100.0);
     }
 
 

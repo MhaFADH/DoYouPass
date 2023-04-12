@@ -14,10 +14,8 @@ import java.util.List;
 
 import static com.doyoupass.doyoupass.LoginController.*;
 
-
 public class Tools {
 
-    // se connecter à pepal en cas d'erreur retourner null
     public HashMap<String,String> connectPepal(String username,String password) {
         try {
 
@@ -48,7 +46,6 @@ public class Tools {
 
     }
 
-    //récuperer la page
     public Document getHtml(String url) throws IOException {
         Connection.Response page = Jsoup.connect(url)
                 .method(Connection.Method.GET)

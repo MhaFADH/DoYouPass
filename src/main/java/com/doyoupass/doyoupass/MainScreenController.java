@@ -23,6 +23,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import static com.doyoupass.doyoupass.LoginController.*;
+import static com.doyoupass.doyoupass.VerifTools.moyGene;
 
 
 public class MainScreenController implements Initializable {
@@ -175,7 +176,7 @@ public class MainScreenController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println(vTools.stageState());
+        moyGene = vTools.moyG();
         try {
             tools.orgaNotes(noteField,moyField,sumNotes,moyenne);
         } catch (IOException e) {
