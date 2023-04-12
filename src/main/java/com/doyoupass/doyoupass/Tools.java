@@ -79,7 +79,6 @@ public class Tools {
                         .method(Connection.Method.POST)
                         .cookies(cookie)
                         .execute();
-                System.out.println("tried");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

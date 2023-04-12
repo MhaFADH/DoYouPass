@@ -19,6 +19,8 @@ public class VerifTools {
     static List<Notees> grds = new ArrayList<>() ;
     static double moyGene;
 
+    static double nbele;
+
 
     public VerifTools() throws IOException {
         this.tools = new Tools();
@@ -50,8 +52,6 @@ public class VerifTools {
 
         absences = hSum+"h"+mSum+"m";
 
-        System.out.println(absences);
-
         if(hSum>=100){
             return false;
         }else{
@@ -68,14 +68,11 @@ public class VerifTools {
             if(ele.child(0).text().contains("Respect des Normes")){
             } else if(str.contains("ABSENT") | str.contains("EXEMPTE")){}else{
                 if(Double.parseDouble(str)<5){
-                    System.out.println(Double.parseDouble(str));
-                    System.out.println("true");
                     return true;
                 };
             }
 
         }
-        System.out.println("false");
         return false;
     }
 
@@ -114,7 +111,7 @@ public class VerifTools {
                 array.add(ele);
         }
 
-        long nbele = array.stream().count();
+        nbele = array.stream().count();
 
         for (int i=0; i<nbele;i++){
             notestb = new ArrayList<>();

@@ -6,7 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.*;
-
+import java.sql.*;
 import java.io.IOException;
 
 public class Main extends Application {
@@ -24,6 +24,10 @@ public class Main extends Application {
         primaryStage.setResizable(false);
         primaryStage.show();
 
+        primaryStage.setOnCloseRequest((WindowEvent event) -> {
+            System.exit(0);
+        });
+
     }
 
     public void mainScreen(Stage primaryStage) throws IOException {
@@ -35,6 +39,10 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
         primaryStage.show();
+
+        primaryStage.setOnCloseRequest((WindowEvent event) -> {
+            System.exit(0);
+        });
 
     }
 

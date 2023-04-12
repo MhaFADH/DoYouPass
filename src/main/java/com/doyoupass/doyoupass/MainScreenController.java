@@ -3,6 +3,10 @@ package com.doyoupass.doyoupass;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import org.jsoup.Connection;
@@ -13,9 +17,11 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.Date;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -33,6 +39,8 @@ public class MainScreenController implements Initializable {
     public final String msg3 = "Pas de cours prévu pour aujourd'hui" ;
     public static float sumNotes;
     public static float moyenne;
+    public static HashMap<String,List<Double>> moyList;
+
 
     @FXML
     private Button buttonPres;
@@ -64,6 +72,12 @@ public class MainScreenController implements Initializable {
     private TextField underHundred;
     @FXML
     private TextField isPassing;
+    @FXML
+    private LineChart<?,?> lineCh;
+    @FXML
+    private NumberAxis y;
+    @FXML
+    private CategoryAxis x;
 
     public MainScreenController() throws IOException {
     }
@@ -292,6 +306,96 @@ public class MainScreenController implements Initializable {
         }else{
             isPassing.setStyle("-fx-background-color: red;");
         }
+
+        String usernumber = username+"NB";
+
+        moyList = new HashMap<>();
+
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/registerdb","root","PA$$W0RDPA$$W0RD");
+
+            Statement statement = connection.createStatement();
+
+            ResultSet resultSet = statement.executeQuery(String.format("SELECT * FROM willyoupass where name='%s'",username));
+
+            while(resultSet.next()){
+                if(moyList.containsKey(username)){
+                    moyList.get(username).add(resultSet.getDouble(2));
+
+                }else{
+                    List<Double> init = new ArrayList<>();
+                    init.add(resultSet.getDouble(2));
+                    moyList.put(resultSet.getString(1),init);
+                }
+            }
+
+            ResultSet resultSet1 = statement.executeQuery(String.format("SELECT * FROM willyoupass where name='%s'",usernumber));
+
+            HashMap<String,Double> oldNbr = new HashMap<>();
+
+            while(resultSet1.next()){
+                oldNbr.put(resultSet1.getString(1),resultSet1.getDouble(2));
+            }
+
+            String imp = "INSERT INTO willyoupass VALUES (?,?)" ;
+            PreparedStatement prest = connection.prepareStatement(imp);
+            System.out.println(moyList);
+            System.out.println(oldNbr);
+
+            if(moyList.containsKey(username) && oldNbr.containsKey(usernumber)){
+
+                if(oldNbr.get(usernumber) != nbele){
+                    String imp1 = "UPDATE willyoupass SET moy=? WHERE name=?";
+                    PreparedStatement prep = connection.prepareStatement(imp1);
+                    prep.setDouble(1,nbele);
+                    prep.setString(2,usernumber);
+                    prep.executeUpdate();
+                    prest.setString(1,username);
+                    prest.setDouble(2,moyGene);
+                    prest.executeUpdate();
+                    System.out.println("test");
+
+                }
+
+                XYChart.Series series = new XYChart.Series();
+                int counter = 1;
+                for (Double moy:moyList.get(username)) {
+                    series.getData().add(new XYChart.Data(counter+"",moy));
+                    counter++;
+                };
+
+                lineCh.getData().addAll(series);
+
+            }else if (moyList.isEmpty() && oldNbr.isEmpty()){
+                prest.setString(1,username);
+                prest.setDouble(2,moyGene);
+                prest.executeUpdate();
+                prest.setString(1,usernumber);
+                prest.setDouble(2,nbele);
+                prest.executeUpdate();
+
+
+            }else if(moyList.containsKey(username)){
+                prest.setString(1,usernumber);
+                prest.setDouble(2,nbele);
+                prest.executeUpdate();
+            }else if(oldNbr.containsKey(usernumber)){
+                prest.setString(1,username);
+                prest.setDouble(2,moyGene);
+                prest.executeUpdate();
+            }
+
+            connection.close();
+
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+
+
+
 
 
     }

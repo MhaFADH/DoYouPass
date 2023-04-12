@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.PointLight?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
@@ -22,7 +23,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="787.0" prefWidth="1124.0" style="-fx-background-color: #B1D1DE;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.doyoupass.doyoupass.MainScreenController">
    <children>
-      <Pane fx:id="passPane" layoutX="288.0" prefHeight="787.0" prefWidth="838.0" style="-fx-background-color: #B1D1DE;">
+      <Pane fx:id="passPane" layoutX="288.0" prefHeight="787.0" prefWidth="838.0" style="-fx-background-color: #B1D1DE;" visible="false">
          <children>
             <TextField fx:id="underFive" editable="false" layoutX="345.0" layoutY="214.0" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: white;" text="5" />
             <Label layoutX="313.0" layoutY="176.0" text="EN DESSOUS DE 5">
@@ -56,16 +57,17 @@
             </Label>
          </children>
       </Pane>
-      <Pane fx:id="evolPane" layoutX="288.0" prefHeight="787.0" prefWidth="838.0" style="-fx-background-color: #B1D1DE;" visible="false">
+      <Pane fx:id="evolPane" layoutX="288.0" prefHeight="787.0" prefWidth="838.0" style="-fx-background-color: #B1D1DE;">
          <children>
-            <LineChart layoutX="95.0" layoutY="143.0" prefHeight="502.0" prefWidth="625.0" title="Moyenne">
+            <LineChart fx:id="lineCh" layoutX="95.0" layoutY="143.0" prefHeight="502.0" prefWidth="625.0" title="Moyenne">
               <xAxis>
-                <CategoryAxis side="BOTTOM" />
+                <CategoryAxis side="BOTTOM" fx:id="x" />
               </xAxis>
               <yAxis>
-                <NumberAxis side="LEFT" />
+                <NumberAxis fx:id="y" side="LEFT" />
               </yAxis>
             </LineChart>
+            <PointLight color="CHARTREUSE" layoutX="60.0" layoutY="30.0" lightOn="true" />
          </children>
       </Pane>
       <Pane fx:id="homePane" layoutX="288.0" layoutY="-7.0" prefHeight="787.0" prefWidth="838.0" style="-fx-background-color: #B1D1DE;" visible="false">
