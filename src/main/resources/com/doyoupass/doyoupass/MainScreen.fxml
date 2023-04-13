@@ -24,7 +24,7 @@
    <children>
       <Pane fx:id="passPane" layoutX="288.0" layoutY="-7.0" prefHeight="787.0" prefWidth="838.0" style="-fx-background-color: white;">
          <children>
-            <Pane layoutX="-286.0" layoutY="148.0" prefHeight="148.0" prefWidth="1124.0" style="-fx-background-color: #CCD1D1;">
+            <Pane layoutX="-286.0" layoutY="148.0" prefHeight="148.0" prefWidth="1124.0" style="-fx-background-color: #EAE6E6;">
                <children>
                   <Label layoutX="534.0" layoutY="42.0" text="Vérification des prérequis" textFill="#040ea9">
                      <font>
@@ -33,14 +33,14 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="-286.0" layoutY="293.0" prefHeight="502.0" prefWidth="1124.0" style="-fx-background-color: #CCD1D1;">
+            <Pane layoutX="-286.0" layoutY="296.0" prefHeight="502.0" prefWidth="1124.0" style="-fx-background-color: #E1E1E1;">
                <children>
                   <TextField fx:id="isPassing" alignment="CENTER" editable="false" layoutX="771.0" layoutY="232.0" prefHeight="155.0" prefWidth="149.0" style="-fx-background-color: white; -fx-background-radius: 100;" text="pass" />
                   <TextField fx:id="higherTen" alignment="CENTER" editable="false" layoutX="487.0" layoutY="102.0" prefHeight="47.0" prefWidth="48.0" style="-fx-background-color: white; -fx-background-radius: 30;" text="10" />
                   <TextField fx:id="underHundred" alignment="CENTER" editable="false" layoutX="487.0" layoutY="176.0" prefHeight="47.0" prefWidth="48.0" style="-fx-background-color: white; -fx-background-radius: 30;" text="abs" />
                   <TextField fx:id="rapportStg" alignment="CENTER" editable="false" layoutX="487.0" layoutY="251.0" prefHeight="47.0" prefWidth="48.0" style="-fx-background-color: white; -fx-background-radius: 30; -fx-border-style: groove;" text="stg" />
                   <TextField fx:id="underFive" alignment="CENTER" editable="false" layoutX="487.0" layoutY="336.0" prefHeight="47.0" prefWidth="48.0" style="-fx-background-color: white; -fx-background-radius: 30;" text="5" />
-                  <Label alignment="CENTER" layoutX="300.0" layoutY="96.0" prefHeight="24.0" prefWidth="204.0" text="Rapport de stage">
+                  <Label alignment="CENTER" layoutX="300.0" layoutY="114.0" prefHeight="24.0" prefWidth="204.0" text="Rapport de stage">
                      <font>
                         <Font name="Gidugu" size="18.0" />
                      </font>
@@ -50,6 +50,71 @@
                         <Font name="Gill Sans Ultra Bold" size="36.0" />
                      </font>
                   </Label>
+                  <Label alignment="CENTER" layoutX="300.0" layoutY="187.0" prefHeight="24.0" prefWidth="204.0" text="Absences">
+                     <font>
+                        <Font name="Gidugu" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="293.0" layoutY="263.0" prefHeight="24.0" prefWidth="204.0" text="Notes">
+                     <font>
+                        <Font name="Gidugu" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="300.0" layoutY="348.0" prefHeight="24.0" prefWidth="204.0" text="Moyenne">
+                     <font>
+                        <Font name="Gidugu" size="18.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="40.0" fitWidth="27.0" layoutX="582.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../image/dead.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="27.0" layoutX="582.0" layoutY="186.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../image/dead.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="27.0" layoutX="582.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../image/dead.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="27.0" layoutX="582.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../image/dead.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="27.0" fitWidth="27.0" layoutX="622.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../image/trophee.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="27.0" fitWidth="27.0" layoutX="622.0" layoutY="186.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../image/trophee.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="27.0" fitWidth="27.0" layoutX="622.0" layoutY="261.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../image/trophee.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="27.0" fitWidth="27.0" layoutX="664.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../image/trophee.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="77.0" fitWidth="90.0" layoutX="807.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../image/trophee.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="27.0" fitWidth="27.0" layoutX="622.0" layoutY="347.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../image/wait.jpg" />
+                     </image>
+                  </ImageView>
                </children>
             </Pane>
          </children>
@@ -126,7 +191,10 @@
                   <Font name="System Bold" size="13.0" />
                </font>
                <effect>
-                  <DropShadow color="#00000086" />
+                  <DropShadow>
+                     <color>
+                        <Color opacity="0.9048005938529968" />
+                     </color></DropShadow>
                </effect>
             </TextField>
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="642.0" layoutY="548.0" prefHeight="29.0" prefWidth="149.0" text="Moyenne générale">
@@ -141,7 +209,7 @@
             </Label>
          </children>
       </Pane>
-      <VBox layoutY="141.0" prefHeight="646.0" prefWidth="288.0" style="-fx-background-color: #24B4EF; -fx-background-radius: 0 80 0 0;">
+      <VBox layoutY="141.0" prefHeight="654.0" prefWidth="288.0" style="-fx-background-color: #24B4EF; -fx-background-radius: 0 80 0 0;">
          <children>
             <Pane prefHeight="46.0" prefWidth="288.0" />
             <Button fx:id="homeButton" alignment="TOP_CENTER" focusTraversable="false" mnemonicParsing="false" onAction="#homeB" prefHeight="25.0" prefWidth="188.0" style="-fx-background-color: #168BD8; -fx-background-radius: 50 50 50 50;" stylesheets="@BUTTONMa.css" text="Accueil" textFill="WHITE">
