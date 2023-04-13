@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Main-Class: com.doyoupass.doyoupass.Launcher
+Class-Path: javafx-fxml-19.jar mysql-connector-j-8.0.32.jar javafx-contr
+ ols-19-linux.jar javafx-controls-19.jar javafx-fxml-19-linux.jar jsoup-
+ 1.15.4.jar javafx-graphics-19-linux.jar javafx-graphics-19.jar javafx-b
+ ase-19-linux.jar protobuf-java-3.21.9.jar javafx-base-19.jar
+

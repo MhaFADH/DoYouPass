@@ -1,0 +1,21 @@
+<component name="ArtifactManager">
+  <artifact name="DoYouPass:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/DoYouPass_jar</output-path>
+    <root id="root">
+      <element id="archive" name="DoYouPass.jar">
+        <element id="module-output" name="DoYouPass" />
+      </element>
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-fxml:19" />
+      <element id="library" level="project" name="Maven: com.mysql:mysql-connector-j:8.0.32" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-controls:linux:19" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-controls:19" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-fxml:linux:19" />
+      <element id="library" level="project" name="Maven: org.jsoup:jsoup:1.15.4" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-graphics:linux:19" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-graphics:19" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-base:linux:19" />
+      <element id="library" level="project" name="Maven: com.google.protobuf:protobuf-java:3.21.9" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-base:19" />
+    </root>
+  </artifact>
+</component>

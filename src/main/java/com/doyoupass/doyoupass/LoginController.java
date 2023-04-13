@@ -20,6 +20,8 @@ public class LoginController{
     public static String password = "";
     public static HashMap<String,String> cookie;
 
+    private Main mainapp;
+
     @FXML
     private Label sdvLabel;
     @FXML
@@ -56,5 +58,9 @@ public class LoginController{
         }
 
     }
+    public void setMainApp(Main mainapp) {
+        this.mainapp = mainapp;
+    }
+
 
 }

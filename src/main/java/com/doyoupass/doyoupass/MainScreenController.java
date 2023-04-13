@@ -41,6 +41,8 @@ public class MainScreenController implements Initializable {
     public static float moyenne;
     public static HashMap<String,List<Double>> moyList;
 
+    private Main mainapp;
+
 
     @FXML
     private Button buttonPres;
@@ -314,7 +316,7 @@ public class MainScreenController implements Initializable {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/registerdb","root","PA$$W0RDPA$$W0RD");
+            java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/doyoupass","admin","password");
 
             Statement statement = connection.createStatement();
 
@@ -395,8 +397,8 @@ public class MainScreenController implements Initializable {
 
 
 
-
-
-
+    }
+    public void setMainApp(Main mainapp) {
+        this.mainapp = mainapp;
     }
 }
