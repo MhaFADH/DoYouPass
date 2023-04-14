@@ -16,7 +16,6 @@ public class Main extends Application {
         this.primaryStage = primaryStage;
         Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
         Scene scene = new Scene(root, 829, 473);
-        scene.setFill(Color.web("#3c81bc"));
         LoginController controller = new LoginController();
         controller.setMainApp(this);
         this.primaryStage.setTitle("Login");

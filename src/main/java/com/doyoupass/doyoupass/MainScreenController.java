@@ -8,6 +8,7 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
@@ -80,6 +81,31 @@ public class MainScreenController implements Initializable {
     private NumberAxis y;
     @FXML
     private CategoryAxis x;
+    @FXML
+    private ImageView yes5;
+    @FXML
+    private ImageView no5;
+    @FXML
+    private ImageView yes10;
+    @FXML
+    private ImageView no10;
+    @FXML
+    private ImageView yes100;
+    @FXML
+    private ImageView no100;
+    @FXML
+    private ImageView yes12;
+    @FXML
+    private ImageView no12;
+    @FXML
+    private ImageView pend12;
+    @FXML
+    private ImageView yesRes;
+    @FXML
+    private ImageView noRes;
+    @FXML
+    private ImageView pendRes;
+
 
     public MainScreenController() throws IOException {
     }
@@ -235,6 +261,7 @@ public class MainScreenController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         try {
             vTools.isUnderAHundred();
         } catch (IOException e) {
@@ -261,38 +288,38 @@ public class MainScreenController implements Initializable {
 
         switch (stgRes){
             case "OK!":
-                rapportStg.setStyle("-fx-background-color: green;");
+                yes12.setVisible(true);
                 eta++;
                 break;
             case "NO!":
-                rapportStg.setStyle("-fx-background-color: red;");
+                no12.setVisible(true);
                 break;
             default:
-                rapportStg.setStyle("-fx-background-color: orange;");
+                pend12.setVisible(true);
                 exception = "Exc";
                 break;
         }
 
         if(vTools.isUnderFive()){
-            underFive.setStyle("-fx-background-color: red;");
+            no5.setVisible(true);
         }else {
-            underFive.setStyle("-fx-background-color: green;");
+            yes5.setVisible(true);
             eta++;
         }
 
         if(vTools.moyG()>=10){
-            higherTen.setStyle("-fx-background-color: green;");
+            yes10.setVisible(true);
             eta++;
         }else{
-            higherTen.setStyle("-fx-background-color: red;");
+            no10.setVisible(true);
         }
 
         try {
             if(vTools.isUnderAHundred()){
-                underHundred.setStyle("-fx-background-color: green;");
+                yes100.setVisible(true);
                 eta++;
             }else{
-                underHundred.setStyle("-fx-background-color: red;");
+                no100.setVisible(true);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -300,13 +327,13 @@ public class MainScreenController implements Initializable {
             throw new RuntimeException(e);
         }
         if (eta == 4){
-            isPassing.setStyle("-fx-background-color: green;");
+            yesRes.setVisible(true);
         }else if (moyGene<10 | vTools.isUnderFive()){
-            isPassing.setStyle("-fx-background-color: red;");
+            noRes.setVisible(true);
         } else if (exception.contains("Exc")) {
-            isPassing.setStyle("-fx-background-color: orange;");
+            pendRes.setVisible(true);
         }else{
-            isPassing.setStyle("-fx-background-color: red;");
+            noRes.setVisible(true);
         }
 
         String usernumber = username+"NB";
@@ -343,8 +370,6 @@ public class MainScreenController implements Initializable {
 
             String imp = "INSERT INTO willyoupass VALUES (?,?)" ;
             PreparedStatement prest = connection.prepareStatement(imp);
-            System.out.println(moyList);
-            System.out.println(oldNbr);
 
             if(moyList.containsKey(username) && oldNbr.containsKey(usernumber)){
 
@@ -363,6 +388,7 @@ public class MainScreenController implements Initializable {
 
                 XYChart.Series series = new XYChart.Series();
                 int counter = 1;
+                series.setName("Moyenne générale");
                 for (Double moy:moyList.get(username)) {
                     series.getData().add(new XYChart.Data(counter+"",moy));
                     counter++;
@@ -394,6 +420,9 @@ public class MainScreenController implements Initializable {
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
+
+
+
 
 
 

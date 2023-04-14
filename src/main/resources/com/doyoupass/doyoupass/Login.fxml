@@ -11,7 +11,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="473.0" prefWidth="834.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.doyoupass.doyoupass.LoginController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="473.0" prefWidth="834.0" style="-fx-background-color: white; -fx-border-radius: 50;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.doyoupass.doyoupass.LoginController">
    <children>
       <Pane layoutY="-6.0" prefHeight="479.0" prefWidth="421.0">
          <children>
@@ -22,42 +22,46 @@
             </ImageView>
          </children>
       </Pane>
-      <Label alignment="CENTER" layoutX="493.0" layoutY="66.0" prefHeight="70.0" prefWidth="260.0" text="Login">
-         <font>
-            <Font name="System Bold Italic" size="35.0" />
-         </font>
-      </Label>
-      <TextField fx:id="usernameField" layoutX="527.0" layoutY="183.0" prefHeight="25.0" prefWidth="191.0" promptText="Identifiant" style="-fx-background-radius: 50;">
-         <effect>
-            <DropShadow>
-               <color>
-                  <Color red="0.07058823853731155" green="0.8039215803146362" blue="0.7529411911964417" />
-               </color>
-            </DropShadow>
-         </effect>
-         <font>
-            <Font size="21.0" />
-         </font>
-      </TextField>
-      <PasswordField fx:id="passwordField" layoutX="527.0" layoutY="254.0" prefHeight="25.0" prefWidth="191.0" promptText="Mot de passe" style="-fx-background-radius: 50;">
-         <effect>
-            <DropShadow>
-               <color>
-                  <Color red="0.07058823853731155" green="0.8039215803146362" blue="0.7529411911964417" />
-               </color>
-            </DropShadow>
-         </effect>
-         <font>
-            <Font size="21.0" />
-         </font>
-      </PasswordField>
-      <Button fx:id="loginButton" layoutX="566.0" layoutY="349.0" mnemonicParsing="false" onAction="#login" prefHeight="36.0" prefWidth="101.0" style="-fx-background-color: #1C649E;" stylesheets="@BUTTONST.css" text="Login" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-         <effect>
-            <DropShadow color="#000000a4" />
-         </effect>
-      </Button>
+      <Pane layoutX="460.0" layoutY="77.0" prefHeight="332.0" prefWidth="335.0" style="-fx-background-color: #3E7CBD; -fx-background-radius: 50;">
+         <children>
+            <Label alignment="CENTER" layoutX="38.0" layoutY="30.0" prefHeight="70.0" prefWidth="260.0" text="Identification" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="31.0" />
+               </font>
+            </Label>
+            <TextField fx:id="usernameField" layoutX="72.0" layoutY="126.0" prefHeight="25.0" prefWidth="191.0" promptText="Identifiant" style="-fx-background-radius: 50;">
+               <effect>
+                  <DropShadow>
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </DropShadow>
+               </effect>
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </TextField>
+            <PasswordField fx:id="passwordField" layoutX="72.0" layoutY="188.0" prefHeight="25.0" prefWidth="191.0" promptText="Mot de passe" style="-fx-background-radius: 50;">
+               <effect>
+                  <DropShadow>
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </DropShadow>
+               </effect>
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </PasswordField>
+            <Button fx:id="loginButton" layoutX="118.0" layoutY="266.0" mnemonicParsing="false" onAction="#login" prefHeight="36.0" prefWidth="101.0" style="-fx-background-color: #1C649E;" stylesheets="@BUTTONST.css" text="Login" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <effect>
+                  <DropShadow color="#000000a4" />
+               </effect>
+            </Button>
+         </children>
+      </Pane>
    </children>
 </Pane>
