@@ -38,6 +38,7 @@ public class MainScreenController implements Initializable {
     public final String msg1 = "l'appel a été clôturé" ;
     public final String msg2 = "l'appel n'a pas été encore ouvert" ;
     public final String msg3 = "Pas de cours prévu pour aujourd'hui" ;
+    public final String msg4 = "Présence validée avec succès ! ";
     public static float sumNotes;
     public static float moyenne;
     public static HashMap<String,List<Double>> moyList;
@@ -218,6 +219,7 @@ public class MainScreenController implements Initializable {
                             .data(setPresToken)
                             .data(apremMap)
                             .execute();
+                    alert(msg4);
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
@@ -240,6 +242,7 @@ public class MainScreenController implements Initializable {
                             .data(setPresToken)
                             .data(matinMap)
                             .execute();
+                    alert(msg4);
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
