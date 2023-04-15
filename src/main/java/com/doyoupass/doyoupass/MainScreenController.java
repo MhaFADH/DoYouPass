@@ -343,7 +343,7 @@ public class MainScreenController implements Initializable {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/doyoupass","admin","password");
+            java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://38.242.229.23:3306/doyoupass","root","password");
 
             Statement statement = connection.createStatement();
 
