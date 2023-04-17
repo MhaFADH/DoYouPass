@@ -99,6 +99,8 @@ public class VerifTools {
         String matiere;
         String coef;
         List<Element> array = new ArrayList<>();
+        List<Element> arrayN = new ArrayList<>();
+
 
         int counter = 0;
         double sum = 0;
@@ -110,14 +112,21 @@ public class VerifTools {
             if(ele.hasClass("info") | ele.hasClass("note_devoir"))
                 array.add(ele);
         }
+        for(Element ele:tr){
+            if(ele.hasClass("note_devoir")){
+                if(!ele.child(3).text().isEmpty()){
+                    arrayN.add(ele);
+                }
+            }
+        }
 
-        nbele = array.stream().count();
+        nbele = arrayN.stream().count();
 
-        for (int i=0; i<nbele;i++){
+        for (int i=0; i<50;i++){
             notestb = new ArrayList<>();
             Element act = array.get(i);
             if(act.hasClass("info")){
-                for(int j = i+1;j<nbele;j++){
+                for(int j = i+1;j<50;j++){
                     if(array.get(j).hasClass("note_devoir")){
                         String note = array.get(j).child(3).text();
                         if(note.contains("EXEMPTE") | note.contains("ABSENT")){

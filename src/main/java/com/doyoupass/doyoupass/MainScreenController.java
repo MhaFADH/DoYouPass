@@ -219,7 +219,6 @@ public class MainScreenController implements Initializable {
                             .data(setPresToken)
                             .data(apremMap)
                             .execute();
-                    alert(msg4);
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
@@ -242,7 +241,6 @@ public class MainScreenController implements Initializable {
                             .data(setPresToken)
                             .data(matinMap)
                             .execute();
-                    alert(msg4);
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
