@@ -24,8 +24,8 @@ public class VerifTools {
 
     public VerifTools() throws IOException {
         this.tools = new Tools();
-        this.noteHmtl = tools.getHtml("https://www.pepal.eu/?my=notes");
-        this.fiche = tools.getHtml("https://www.pepal.eu/?my=file");
+        this.noteHmtl = tools.getHtml("page de notes");
+        this.fiche = tools.getHtml("page de notes");
 
     }
 

@@ -24,7 +24,7 @@ public class Tools {
             formData.put("login", username);
             formData.put("pass", password);
 
-            Connection.Response response = Jsoup.connect("https://www.pepal.eu/include/php/ident.php")
+            Connection.Response response = Jsoup.connect("page de connexion")
                     .data(formData)
                     .method(Connection.Method.POST)
                     .execute();
@@ -75,7 +75,7 @@ public class Tools {
     Runnable keepSession = new Runnable() {
         public void run() {
             try {
-                Connection.Response page = Jsoup.connect("https://www.pepal.eu/interaction.php")
+                Connection.Response page = Jsoup.connect("page de connexion")
                         .method(Connection.Method.POST)
                         .cookies(cookie)
                         .execute();
