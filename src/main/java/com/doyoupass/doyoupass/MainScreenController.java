@@ -138,7 +138,7 @@ public class MainScreenController implements Initializable {
         Document presPage;
 
         try {
-            presPage = tools.getHtml("https://www.pepal.eu/presences");
+            presPage = tools.getHtml("page présences");
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
@@ -177,9 +177,9 @@ public class MainScreenController implements Initializable {
         Document pasCours;
 
         try {
-            matinPres = tools.getHtml("https://www.pepal.eu/presences/s/"+matin);
-            apremPres = tools.getHtml("https://www.pepal.eu/presences/s/"+aprem);
-            pasCours = tools.getHtml("https://www.pepal.eu/presences");
+            matinPres = tools.getHtml("page présences"+matin);
+            apremPres = tools.getHtml("page présences"+aprem);
+            pasCours = tools.getHtml("page présences");
 
         } catch (IOException ex) {
             throw new RuntimeException(ex);
@@ -213,7 +213,7 @@ public class MainScreenController implements Initializable {
                 alert(msg3);
             }else{
                 try {
-                    Connection.Response prespge = Jsoup.connect("https://www.pepal.eu/student/upload.php")
+                    Connection.Response prespge = Jsoup.connect("page appel")
                             .method(Connection.Method.POST)
                             .cookies(cookie)
                             .data(setPresToken)
@@ -235,7 +235,7 @@ public class MainScreenController implements Initializable {
                 alert(msg3);
             }else{
                 try {
-                    Connection.Response prespge = Jsoup.connect("https://www.pepal.eu/student/upload.php")
+                    Connection.Response prespge = Jsoup.connect("page appel")
                             .method(Connection.Method.POST)
                             .cookies(cookie)
                             .data(setPresToken)
